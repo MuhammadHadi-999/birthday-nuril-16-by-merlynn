@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Birthday Website — Nuril 16th</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="1">
+<div id="stars" aria-hidden="true"></div>
+
+<main>
+  <!-- Layar 0: countdown (hanya tampil sebelum waktu target) -->
+  <section class="screen" id="countdown">
+    <p class="small">Something Special Is Coming...</p>
+    <h1>NURIL</h1>
+    <div class="timer" role="timer" aria-live="off">
+      <div><b id="t-d">00</b><span>hari</span></div>
+      <div><b id="t-h">00</b><span>jam</span></div>
+      <div><b id="t-m">00</b><span>menit</span></div>
+      <div><b id="t-s">00</b><span>detik</span></div>
+    </div>
+    <p class="small" id="target-label">29 November 2026</p>
+    <button class="btn" id="enter-btn" disabled>Tunggu dulu yaa... ⏳</button>
+    <p class="small">Pilih tema di kiri bawah, lagunya ikut ganti 🎵</p>
+  </section>
+
+  <!-- Card 1 -->
+  <section class="screen" id="birthday">
+    <h1>Happy Birthday<br>Nuril 16th<br>Yeaayyy</h1>
+    <button class="btn" data-next="greet">Lanjut ✨</button>
+  </section>
+
+  <!-- Card 2 -->
+  <section class="screen" id="greet">
+    <p class="msg">Haii anak smanten selamat ulang tahunnn</p>
+    <button class="btn" data-next="doa">Lanjut ✨</button>
+  </section>
+
+  <!-- Card 3 -->
+  <section class="screen" id="doa">
+    <p class="msg">ayo kita doa dulu 🤍</p>
+    <label class="small" for="doa-input">Tulis doa dan harapan kamu di sini yaa...</label>
+    <textarea id="doa-input" maxlength="500" rows="5" placeholder="Tulis doa kamu di sini..."></textarea>
+    <p class="small"><span id="doa-count">0</span>/500</p>
+    <p class="error" id="doa-error" role="alert" hidden>Doanya masih kosong nih, tulis dulu yaa 🤍</p>
+    <button class="btn" id="doa-send">Aamiin, lanjut ✨</button>
+  </section>
+
+  <!-- Card 4 -->
+  <section class="screen" id="aamiin">
+    <p class="small">Doa kamu:</p>
+    <p class="msg prayer" id="prayer-out"></p>
+    <h1 class="pop">AAMIIN 🤍</h1>
+    <button class="btn" data-next="candle">Lanjut ✨</button>
+  </section>
+
+  <!-- Card 5: lilin -->
+  <section class="screen" id="candle">
+    <p class="msg">Bantu tiup lilinnya yaa 🎂</p>
+    <div class="cake" id="cake" data-step="0">
+      <div class="candles">
+        <div class="candle"><i class="flame"></i></div>
+        <div class="candle"><i class="flame"></i></div>
+        <div class="candle"><i class="flame"></i></div>
+      </div>
+      <div class="tier t1"></div>
+      <div class="tier t2"></div>
+      <div class="plate"></div>
+    </div>
+    <p class="msg" id="candle-done" hidden>Yeeayyy, lilinnya udah mati! 🎉</p>
+    <button class="btn" id="blow-btn">Tiuppp!!! 💨</button>
+    <button class="btn" id="candle-next" data-next="school" hidden>Lanjut ✨</button>
+  </section>
+
+  <!-- Card 6 -->
+  <section class="screen" id="school">
+    <p class="msg">semangatt yaaa sekolahnyaaa, aku seneng kamu punya mimpi jadi anak hukum, tapi aku lebih peduli semangat kamu dari pada cita cita kamu, apapun hasilnya nanti aku akan selalu dukung kamuu</p>
+    <button class="btn" data-next="happy">Lanjut ✨</button>
+  </section>
+
+  <!-- Card 7 -->
+  <section class="screen" id="happy">
+    <p class="msg">tapi lebih dari itu, aku lebih berharap kamu bahagia di masa masa SMA ini, semoga disetiap momennya kamu selalu bahagia yaa</p>
+    <button class="btn" data-next="honest">Lanjut ✨</button>
+  </section>
+
+  <!-- Card 8 -->
+  <section class="screen" id="honest">
+    <p class="msg">kalau nanti udh tercapai jadi orang yang jujur yaaa, jangan takut sama mereka, aku akan selalu berusaha ngelindungin orang jujur</p>
+    <button class="btn" data-next="gift">Lanjut ✨</button>
+  </section>
+
+  <!-- Card 9 -->
+  <section class="screen" id="gift">
+    <p class="msg">kalau sempet ke albina kamu ke ibu soto yaa, aku udah nitipin</p>
+    <button class="btn" data-next="gift2">Lanjut ✨</button>
+  </section>
+
+  <!-- Card 10 -->
+  <section class="screen" id="gift2">
+    <p class="msg">aku takut sibuk nanti, makanya aku titipin aja hehehe, diambil okeee??!</p>
+    <button class="btn" id="restart">Kembali ke awal ↺</button>
+  </section>
+</main>
+
+<button class="theme" id="theme-btn" aria-label="Ganti tema (sekarang: kuning pastel)">🎨 Tema 1</button>
+<button class="music" id="music-btn" aria-pressed="false" aria-label="Putar musik" disabled>♫</button>
+<audio id="bgm" src="assets/audio/bgm1.mp3" loop preload="auto"></audio>
+<script src="js/script.js"></script>
+</body>
+</html>
