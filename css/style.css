@@ -1,0 +1,74 @@
+:root,body[data-theme="1"]{--bg:#FFF9E8;--g1:#FFF0AD;--g2:#FFDDE6;--g2-stop:38%;--card:#FFFFFF;--text:#594B32;--text2:#8B795B;--btn:#F4CF68;--btn-h:#EABF4F;--btn-text:#594B32;--accent:#FBD0DC;--err:#a4572b;--shadow:rgba(180,140,40,.18)}
+body[data-theme="2"]{--g2-stop:55%;--bg:#D8C4EE;--g1:#BFA2E0;--g2:#F4B6D2;--card:#F6EEFC;--text:#3B2457;--text2:#6A4F8C;--btn:#B58BE0;--btn-h:#A273D6;--btn-text:#2E1A47;--accent:#F7A8C8;--err:#9b2c5f;--shadow:rgba(90,50,140,.25)}
+body[data-theme="3"]{--g2-stop:60%;--bg:#6F0F14;--g1:#97121A;--g2:#3F0A0E;--card:#560B12;--box:#6B1119;--text:#FBE6E0;--text2:#E8B0A8;--btn:#F3D9D2;--btn-h:#E6BDB3;--btn-text:#5A0A10;--accent:#8E1A22;--err:#FFB0A8;--shadow:rgba(20,0,2,.55)}*{box-sizing:border-box}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;min-height:100svh;font-family:Nunito,system-ui,sans-serif;color:var(--text);
+  background:radial-gradient(circle at 20% 10%,var(--g1),transparent 55%),radial-gradient(circle at 85% 90%,var(--g2),transparent var(--g2-stop,55%)),var(--bg);
+  overflow-x:hidden;transition:background-color .5s}
+main{min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:16px}
+.screen{display:none;width:100%;max-width:520px;background:var(--card);border-radius:28px;padding:clamp(22px,6vw,40px);
+  text-align:center;box-shadow:0 12px 40px var(--shadow);flex-direction:column;align-items:center;gap:16px;position:relative;z-index:1}
+.screen.active{display:flex;animation:in .5s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+h1{font-family:Quicksand,sans-serif;font-size:clamp(2rem,9vw,3rem);margin:0;line-height:1.15}
+.msg{font-size:clamp(1.05rem,4.4vw,1.3rem);line-height:1.7;margin:0;overflow-wrap:anywhere}
+.small{font-size:.95rem;color:var(--text2);margin:0}
+.btn{font:700 1rem Nunito,sans-serif;color:var(--btn-text);background:var(--btn);border:0;border-radius:999px;min-height:48px;padding:12px 28px;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{background:var(--btn-h);transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%}
+.timer div{background:var(--bg);border-radius:16px;padding:12px 4px;display:flex;flex-direction:column}
+.timer b{font:700 clamp(1.4rem,7vw,2rem) Quicksand,sans-serif}
+.timer span{font-size:.8rem;color:var(--text2)}
+textarea{width:100%;font:inherit;color:var(--text);background:var(--bg);border:2px solid var(--accent);border-radius:16px;padding:12px;resize:vertical}
+.error{color:var(--err);margin:0}
+.prayer{max-height:35vh;overflow-y:auto;width:100%;white-space:pre-wrap}
+.pop{animation:pop .7s .3s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+/* kue + lilin */
+.cake{position:relative;width:240px;height:210px;margin:6px auto 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.plate{width:240px;height:12px;border-radius:50%;background:#e9dcc0;box-shadow:0 4px 8px rgba(0,0,0,.12)}
+.tier{border-radius:14px 14px 6px 6px;position:relative}
+.tier::before{content:"";position:absolute;left:0;right:0;top:0;height:16px;border-radius:14px 14px 0 0;
+  background:radial-gradient(circle at 12px 100%,#fff 9px,transparent 10px) 0 0/28px 100% repeat-x,#fff}
+.t1{width:130px;height:52px;background:#FFC2D1;z-index:2;margin-bottom:-12px}
+.t2{width:200px;height:66px;background:#FFE29A;z-index:1}
+.candles{display:flex;gap:26px;margin-bottom:-4px;z-index:3;height:52px;align-items:flex-end}
+.candle{width:9px;height:34px;background:repeating-linear-gradient(135deg,#8ED1FC 0 6px,#fff 6px 12px);border-radius:3px;position:relative}
+.flame{position:absolute;left:50%;bottom:100%;width:14px;height:24px;margin-left:-7px;margin-bottom:2px;
+  background:radial-gradient(ellipse at 50% 75%,#fff7c8 0 25%,#ffc928 55%,#ff8a1f 100%);
+  border-radius:50% 50% 50% 50%/65% 65% 35% 35%;transform-origin:50% 100%;
+  box-shadow:0 0 12px 4px rgba(255,190,50,.55);
+  animation:flick .45s ease-in-out infinite alternate;transition:scale .3s,opacity .5s}
+.candle:nth-child(2) .flame{animation-delay:-.15s}
+.candle:nth-child(3) .flame{animation-delay:-.3s}
+@keyframes flick{from{transform:rotate(calc(var(--tilt,0deg) - 5deg)) scaleY(.95)}to{transform:rotate(calc(var(--tilt,0deg) + 5deg)) scaleY(1.12)}}
+/* tiap tiupan: api miring/mengecil */
+.cake[data-step="1"]{--tilt:22deg}
+.cake[data-step="2"]{--tilt:-24deg}
+.cake[data-step="3"]{--tilt:28deg}
+.cake[data-step="4"]{--tilt:-30deg}
+.cake[data-step="5"]{--tilt:32deg}
+.cake[data-step="6"]{--tilt:-34deg}
+.cake[data-step="3"] .flame,.cake[data-step="4"] .flame{scale:.8}
+.cake[data-step="5"] .flame{scale:.6}
+.cake[data-step="6"] .flame{scale:.4}
+.cake.out .flame{animation:none;opacity:0;scale:.1}
+.cake.out .candle::after{content:"~";position:absolute;left:50%;bottom:110%;color:#aaa;font-size:1.4rem;animation:smoke 1.6s ease-out both}
+@keyframes smoke{from{opacity:.9;transform:translate(-50%,0)}to{opacity:0;transform:translate(-50%,-34px)}}
+/* bintang */
+#stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;top:-40px;line-height:1;text-shadow:0 0 4px #fff,0 0 10px rgba(233,185,73,.9);animation:fall linear infinite}
+.confetti{position:absolute;top:-50px;border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.15);animation:fall linear infinite,sway 2s ease-in-out infinite alternate}
+@keyframes sway{from{margin-left:-14px}to{margin-left:14px}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.music,.theme{position:fixed;bottom:14px;width:48px;height:48px;border-radius:50%;border:0;background:var(--btn);color:var(--btn-text);font-size:1.3rem;cursor:pointer;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.music{right:14px}
+.theme{left:14px;width:auto;padding:0 18px;border-radius:999px;font:700 .95rem Nunito,sans-serif;cursor:pointer;display:flex;align-items:center;gap:6px}
+.music[aria-pressed="true"]{background:var(--btn-h)}
+@media (prefers-reduced-motion:reduce){.screen.active,.pop,.flame{animation:none!important}.btn{transition:none}}
+
+
+.music:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
